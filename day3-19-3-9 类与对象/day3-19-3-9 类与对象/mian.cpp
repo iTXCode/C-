@@ -203,29 +203,29 @@
 
 
 
-#include<iostream>
-#include<windows.h>
-using namespace std;
-
-class Date{
-public:
-	void Print(){
-		cout << _year << "-" << _month << "-" << _day << endl;
-	}
-	void SetDate(int year, int month, int day){
-		_year = year;
-		_month = month;
-		_day = day;
-	}
-private:
-	int _year;
-	int _month;
-	int _day;
-};
-int main(){
-	Date d1;
-	d1.SetDate(2019, 3, 9);
-	d1.Print();
-	system("pause");
-	return 0;
-}
+//#include<iostream>
+//#include<windows.h>
+//using namespace std;
+//
+//class Date{
+//public:
+//	void Print(){
+//		cout << _year << "-" << _month << "-" << _day << endl;
+//	}
+//	void SetDate(int year, int month, int day){
+//		_year = year;
+//		_month = month;
+//		_day = day;
+//	}
+//private:
+//	int _year;
+//	int _month;
+//	int _day;
+//};
+//int main(){
+//	Date d1;
+//	d1.SetDate(2019, 3, 9);
+//	d1.Print();
+//	system("pause");
+//	return 0;
+//}
