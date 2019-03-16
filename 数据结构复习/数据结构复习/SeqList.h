@@ -91,3 +91,11 @@ void  SeqListRemove(SeqList *seqlist,SDataType value);
 bool SeqListEmpty(const SeqList *seqlist);
 //返回数据个数
 int SeqListSize(const SeqList *seqlist);
+
+//冒泡排序
+
+void SeqListBubbleSort(SeqList * seqlist);
+
+//二分查找
+
+int SeqListBinarySort(SeqList *seqlist,SDataType value);

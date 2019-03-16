@@ -144,7 +144,7 @@ void SeqListModify(SeqList *seqlist, int pos, SDataType value){
 //如果没找到返回-1
 int SeqListFind(const SeqList *seqlist, SDataType value){
 	assert(seqlist!=NULL);
-	for (int i - 0; i < seqlist->size;i++){
+	for (int i = 0; i < seqlist->size;i++){
 		if (seqlist->array[i] == value)
 			return i;
 	}
@@ -152,7 +152,7 @@ int SeqListFind(const SeqList *seqlist, SDataType value){
 }
 //找到并删除第一个遇到的 value
 void  SeqListRemove(SeqList *seqlist, SDataType value){
-	int pos = SeqListFind(sqlist,value);
+	int pos = SeqListFind(seqlist,value);
 	if (pos != -1){
 		SeqListErase(seqlist,pos);
 	}
@@ -165,4 +165,48 @@ bool SeqListEmpty(const SeqList *seqlist){
 //返回数据个数
 int SeqListSize(const SeqList *seqlist){
 	return seqlist->size;
+}
+
+//冒泡排序
+
+void Swap(int *ptr1, int *ptr2){
+	int swap = *ptr1;
+	*ptr1 = *ptr2;
+	*ptr2 = swap;
+}
+//冒泡排序
+void SeqListBubbleSort(SeqList * seqlist){
+	int flag = 1;
+	for (int i = 0; i<seqlist->size - 1; i++){
+		//一次冒泡过程
+		for (int j = 0; j<seqlist->size - 1 - i; j++){
+			if (seqlist->array[j]>seqlist->array[j + 1]){
+				Swap(seqlist->array[j], seqlist->array[j + 1]);
+				flag = 0;
+			}
+			//一次冒泡结束
+			if (flag == 1)
+				break;
+		}
+}
+
+	//二分查找
+	int SeqListBinarySort(SeqList *seqlist, SDataType value) {
+		int left = 0;
+		int right = seqlist->size;
+		while (left < right){
+			//如果left<= righ 的话会出现 [3,3)成立的情况
+			int mid = (left - right) / 2 + left;
+			if (seqlist->array[mid] == value){
+				return mid;
+			}
+			else if (value <seqlist->array[mid]){
+				right = mid;
+			}
+			else {
+				left = mid + 1;
+			}
+		}
+		//没找到
+		return -1;
 }

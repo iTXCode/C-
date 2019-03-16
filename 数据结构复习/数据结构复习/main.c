@@ -73,12 +73,13 @@ void TestSeqList(){
 	SeqListPopFront(&seqlist);
 	SeqListErase(&seqlist, 3);
 	SeqListDestroy(&seqlist);
-}
 
+}
 
 int main(){
 
 	TestSeqList();
+
 	system("pause");
 	return 0;
 }
