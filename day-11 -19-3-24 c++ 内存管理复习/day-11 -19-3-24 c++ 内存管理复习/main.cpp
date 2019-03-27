@@ -171,36 +171,73 @@
 //	system("pause");
 //	return 0;
 //}
+//
+//#include<iostream>
+//#include<stdlib.h>
+//#include<windows.h>
+//using namespace std;
+//
+//class Test
+//{
+//public:
+//	Test()
+//		: _data(0)
+//	{
+//		cout << "Test():" << this << endl;
+//	}
+//	~Test()
+//	{
+//		cout << "~Test():" << this << endl;
+//	}
+//
+//private:
+//	int _data;
+//};
+//int main(){
+//	Test* pa = (Test *)malloc(sizeof(Test));//只是开辟空间
+//	free(pa);
+//	Test *pb = new Test;
+//	//new 对于自定义类型来说，1.开辟空间2.调用构造函数(初始化)
+//	delete pb;   //3.先析构4.再释放空间
+//	Test *pc = new Test[10];
+//	delete[]pc;
+//	system("pause");
+//	return 0;
+//}
 
 #include<iostream>
 #include<stdlib.h>
 #include<windows.h>
 using namespace std;
 
-class Test
-{
+class A{
 public:
-	Test()
-		: _data(0)
-	{
-		cout << "Test():" << this << endl;
-	}
-	~Test()
-	{
-		cout << "~Test():" << this << endl;
+	A(){
+		cout << "A" << endl;
 	}
 
+	~A(){
+		//释放空间
+		//if(_pi){
+		//free(_pi);
+		//_pi=nullptr;
+		cout << "~A" << endl;
+	}
 private:
-	int _data;
+	int _a;
+	int _b;
+	int *_pi;
+	//加入申请了空间
 };
 int main(){
-	Test* pa = (Test *)malloc(sizeof(Test));//只是开辟空间
-	free(pa);
-	Test *pb = new Test;
-	//new 对于自定义类型来说，他是开辟空间+调用构造函数(初始化)
-	delete pb;   //先析构在释放空间
-	Test *pc = new Test[10];
-	delete[]pc;
+	//A* pa = (A *)malloc(sizeof(A));
+	//free(pa);
+	A *pb = new A;
+	//new 调用自定义类型的构造函数，malloc不会
+	delete pb;
+	//delete 调用自定义类型的析构函数，free不会 
+	/*A *pc = new A[10];
+	delete[] pc;*/
 	system("pause");
 	return 0;
 }
