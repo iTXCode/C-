@@ -4,7 +4,7 @@
 using namespace std;
 
 //c++中全局变量的检测性增强
-
+int a;
 int a = 10;
 
 //函数检测增强,参数类型增强，返回值类型增强，函数调用的参数检测增强
@@ -13,7 +13,7 @@ int Add(int num_1,int num_2){
 	return num_1 + num_2;
 }
 void test(){
-	Add(10,20);
+	Add(10,20,30);
 }
 
 //3.类型转换增强
