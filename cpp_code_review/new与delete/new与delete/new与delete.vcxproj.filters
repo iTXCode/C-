@@ -15,22 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Test.cpp">
+    <ClCompile Include="tset.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="explicit.cpp">
+    <ClCompile Include="Heapcpp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="static.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="friend.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="内部类.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Solution.cpp">
+    <ClCompile Include="stack.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

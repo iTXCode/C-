@@ -15,22 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Test.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="explicit.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="static.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="friend.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="内部类.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Solution.cpp">
+    <ClCompile Include="tesr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

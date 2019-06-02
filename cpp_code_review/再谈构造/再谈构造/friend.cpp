@@ -8,6 +8,7 @@ class Date{
 	friend void operator<<(ostream &out, Date d);
 	//友元函数
 	//友元关系不能传递
+	//不能用const 修饰
 public:
 	
 	Date(){
