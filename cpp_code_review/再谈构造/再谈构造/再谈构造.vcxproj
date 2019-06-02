@@ -65,8 +65,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="explicit.cpp" />
+    <ClCompile Include="friend.cpp" />
     <ClCompile Include="static.cpp" />
     <ClCompile Include="Test.cpp" />
+    <ClCompile Include="内部类.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

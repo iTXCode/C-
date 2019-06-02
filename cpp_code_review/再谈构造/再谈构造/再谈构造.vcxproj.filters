@@ -24,5 +24,11 @@
     <ClCompile Include="static.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="friend.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="内部类.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
