@@ -64,4 +64,22 @@ int main(){
 
 #endif
 
-
+//class Date{
+//public:
+//	Date(){
+//		cout << "Date(int)" << endl;
+//	}
+//	Date(const Date&d){
+//		cout << "Date (const Date&)" << endl;
+//	}
+//
+//	static int count;
+//};
+//int Date::count = 0;
+//
+//int main(){
+//	Date d;
+//	cout << Date::count << endl;
+//	cout << d.count << endl;
+//	return 0;
+//}
