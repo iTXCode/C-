@@ -72,13 +72,17 @@ int main(){
 #endif
 
 
+
 #if 0
+
 //内部类
 #include<iostream>
 
 using  namespace std;
 
 class A{
+	friend int Sum();
+	friend istream &operator>>(istream &_cin,const A&a);
 public:
 	A(){
 		cout << "A(int)" << endl;
@@ -93,6 +97,13 @@ public:
 	public:
 		static int  getA(A a){
 			a._a = 10;
+			a.a_ = 12;
+			cout << a.a_<< endl;
+			//不同的变量必须通过对象.的方式访问
+			cout << A::_a << endl;
+			cout << _a << endl;
+			//内部类可以对外部类的静态变量直接访问
+			//也可以通过对象. 的和类名+作用域限定符的方式访问
 			return _a;
 		}
 		
@@ -103,21 +114,40 @@ public:
 		return _out;
 		//运算符<<重载
 	}
+	void disPlay(){
+		cout << _a << endl;
+	}
 	
 private:
 	static int _a;
+	int a_;
 };
+
+int A::_a = 0;
+
+//友元函数的使用
+istream &operator>>(istream &_cin,const A&a){
+	_cin >> a._a;
+	return _cin;
+}
 
 
 //内部类是外部类的友元类
-int A::_a = 0;
+
 
 int main(){
 	A a;
 	A::B b;
+	cin >> a;
+	a.disPlay();
 	cout<<b.getA(a)<<endl;
 	a<< cout;
 	return 0;
 }
+
+//【注意】在一个类中申明友元类/友元函数后，
+//可以在申明的函数或类中访问该类的所有成员.
+//而对于内部类来说，它是外部类的友元类
+//而外部类对内部类没有任何访问权限
 
 #endif
