@@ -1,5 +1,5 @@
 #if 0
-//Ä£°å
+//Ä£°åº¯Êý
 
 #include<iostream>
 
@@ -36,6 +36,9 @@ int main(){
 
 #endif
 
+
+
+#if  0
 
 #include<iostream>
 #include<assert.h>
@@ -107,6 +110,10 @@ int main(){
 	cout << endl;
 	return 0;
 }
+
+#endif
+
+
 
 
 
