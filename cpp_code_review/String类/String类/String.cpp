@@ -257,7 +257,7 @@ int  main(){
 
 
 
-
+#if 0
 //反转字符串
 
 string reverseString(string s){
@@ -276,6 +276,186 @@ int main(){
 	string s("hello bit!");
 	cout <<"s="<< s << endl;
 	cout << "reverseString(s)=" << reverseString(s) << endl;
+	return 0;
+}
+#endif
+
+#if 0
+class Solution{
+public:
+	int fristUniqChar(string s){
+		int hashT[256] = { 0 };
+		for (auto& e : s){
+			hashT[e]++;
+		}
+		for (int i = 0; i < s.size(); i++){
+			if (hashT[s[i]] == 1)
+				return i;
+		}
+		return -1;
+	}
+};
+
+int main(){
+	string s;
+	cin >> s;
+	Solution s1;
+	cout << s1.fristUniqChar(s) << endl;
+	return 0;
+}
+#endif
+
+#if 0
+int main(){
+	string s;
+	while (cin >> s){
+		int hashT[256] = { 0 };
+		for (auto& e : s){
+			hashT[e]++;
+		}
+		int i;
+		for (i = 0; i < s.size(); i++){
+			if (hashT[s[i]] == 1){
+				cout << s[i] << endl;
+				break;
+			}
+		}
+		if (i >= s.size()){
+			cout << -1 << endl;
+		}
+	}
 	
 	return 0;
 }
+#endif
+
+#if  0
+
+int main(){
+	string s;
+	while(getline(cin, s)){
+		size_t pos = s.rfind(' ');
+		if (pos == string::npos){
+			cout << s.size() << endl;
+		}
+		else{
+			cout << s.size() - pos - 1 << endl;
+		}
+	}
+	return 0;
+}
+#endif
+
+#if 0
+class Solution{
+public:
+	bool isNumberLetter(char c){
+		return (c >= '0'&&c <= '9')
+			|| (c >= 'a'&&c <= 'z')
+			|| (c >= 'A' <= 'Z');
+	}
+	
+	bool isPalindrome(string s){
+		int begin = 0;
+		int end = s.size() - 1;
+		//所有的小写转大写
+		for (auto&e : s){
+			if (e >= 'a'){
+				e -= 32;
+			}
+		}
+		while (begin < end){
+			while (begin < end){
+				//从前完后找到第一个字母或数字
+				if (isNumberLetter(s[begin]))
+					break;
+				begin++;
+			}
+			while (begin < end){
+				//从前往后找到最后一个字母或者数字
+				if (isNumberLetter(s[end]))
+					break;
+				end--;
+			}
+			//比较begin和end位置的字符
+			//大小写字母相差32
+			if (s[begin] % 32 != s[end] % 32){
+				//存在取模后值相等的情况
+				//if((s[begin]+32-'a')%32!=(s[end]+32-'a')%32)
+				return false;
+			}
+			if (s[begin] != s[end])
+				return false;
+				begin++;
+			    end--;
+		}
+		return true;
+	}
+};
+
+int  main(){
+	string s = "H0POPPOP0H";
+	Solution s1;
+	cout << s1.isPalindrome(s) << endl;
+	return 0;
+}
+#endif
+
+
+#if 0
+class Solution{
+public:
+	string addStrings(string num1, string num2){
+		int end1 = num1.size() - 1;
+		int end2 = num2.size() - 1;
+		int step = 0;//进位
+		int sum = 0;//当前位的和
+		string ret = "";//保存结果
+		//保证以最长的字符串结尾 
+
+		int  capacity = end1 > end2 ? end1 + 1 : end2 + 1;
+		ret.reserve(capacity);//提前申请空间，减小时间复杂度
+		while (end1 >= 0 || end2 >= 0){
+			//当前为的和
+			sum = 0;//每次要清零当前位的和
+			sum +=step;
+			if (end1 >= 0){
+				sum += num1[end1]-'0';
+			}
+			if (end2 >= 0){
+				sum += num2[end2]-'0';
+			}
+			//获取当前位的值
+			if (sum > 9){
+				//保留进位后的值
+				sum -= 10;
+				//更新进位
+				step = 1;
+			}
+			else{
+				//若本次进位不大于10,可能会误加上一次大于10的进位
+				step = 0;
+			}
+			//以头插的方式将当前位的值用字符串的形式保存到字符串中。
+			ret.insert(0, 1, sum + '0');
+			end1--;
+			end2--;
+		}
+		if (step == 1){
+			//更新最高为的进位
+			ret.insert(0,1,'1');
+		}
+		return ret;
+	}
+};
+
+int main(){
+	string s1 = "123456";
+	string s2 = "3456";
+	Solution s;
+	cout<<s.addStrings(s1, s2)<<endl;
+	return 0;
+}
+
+#endif
+
