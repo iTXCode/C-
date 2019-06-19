@@ -79,7 +79,8 @@ int main(){
 #endif
 
 
-#if   0
+
+#if 0
 int main(){
 	string s="hello bit!";
 	cout << s << endl;
@@ -105,6 +106,8 @@ int main(){
 	string s1("hehe!");
 	s += s1;
 	cout << s << endl;
+	cout << s.size() << endl;
+	cout << s.capacity() << endl;
 	
 	return 0;
 	//void reserve(size_t n=0):
@@ -112,8 +115,9 @@ int main(){
 	//reserve用来增容，提高效率，减少增容操作
 	//当n>capacity时，进行增容，不改变size的大小
 }
-
 #endif
+
+
 
 #if 0
 void testString2(){
@@ -133,16 +137,21 @@ void testString2(){
 		}
 		
 	}
+	cout << sz << endl;
+	cout << s.size() << endl;
+	cout << s.capacity()<<endl;
+	
 }
 
 int main(){
 	testString2();
 	return 0;
 }
+
 #endif
 
-
 #if 0
+
 void testString(){
 	string s;
 	s.push_back('w');
@@ -227,16 +236,17 @@ int main(){
 
 
 
-#if 0
 
+#if 0
 //substr
 int  main(){
 	string s("hello baby!");
 	//substr(size_t pos=0,size_t n);
-	//从字符串s中的位置0开始的n个字符
+	//拷贝从字符串s中的位置0开始的n个字符
 	string s1 = s.substr(2,8);
 	cout << s1 << endl;
 	size_t pos = s.find('o');
+	cout << pos << endl;
 	//rfind从尾端开是查找第一个'o'
 	s1 = s.substr(pos, s.size() - pos);
 	cout << s1 << endl;
@@ -248,12 +258,13 @@ int  main(){
 
 	size_t sz = add.find('/',pos1 + 3);
 	//find(char 'x',size_t pos);
-	//从指定的位置下标开始查找执行的字符'x'
+	//从指定的位置下标开始查找指定的字符'x'
 	string b = add.substr(pos1 + 3, sz - pos1 - 3);
 	cout << "string b="<<b << endl;
 	return 0;
 }
 #endif
+
 
 
 

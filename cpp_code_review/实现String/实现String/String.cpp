@@ -121,3 +121,8 @@ int main(){
 	return 0;
 }
 #endif
+
+#include<iostream>
+#include<string>
+
+using namespace std;
