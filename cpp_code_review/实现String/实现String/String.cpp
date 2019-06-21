@@ -7,6 +7,7 @@ using namespace std;
 
 
 class String{
+	friend ostream& operator<<(ostream &_cout, const String &s);
 public:
 	//【注意】
 	//字符串指针输出会解引用,对于空指针解引用会奔溃
@@ -100,7 +101,8 @@ public:
 	//赋值:传值的时候生成
 	String& operator=(String s)
 	{
-		String tmp(s);//定义的零时变量出了作用域就会调用析构函数
+		String tmp(s);
+		//定义的零时变量出了作用域就会调用析构函数
 		swap(_str, tmp._str);
 		//因为交换了指针,所以释放临时变量指向的空间实质上是
 		//释放了原来的_str指向的空间(调用析构函数释放)
@@ -115,14 +117,20 @@ public:
 private:
 	char* _str;
 };
+
+ostream& operator<<(ostream &_cout, const String &s){
+	_cout << s._str ;
+	return _cout;
+}
 int main(){
 	String s;
 	cout << (void*)s.c_str() << endl;
+	String s1 = "hello world!";
+	cout << s1 << endl;
+	String s2(s1);
+	cout << s2 << endl;
+	String s3;
+	s3=s2;
 	return 0;
 }
 #endif
-
-#include<iostream>
-#include<string>
-
-using namespace std;
