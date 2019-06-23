@@ -64,6 +64,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="classstring.cpp" />
+    <ClCompile Include="const.cpp" />
     <ClCompile Include="Istring.cpp" />
     <ClCompile Include="reString.cpp" />
     <ClCompile Include="String.cpp" />
