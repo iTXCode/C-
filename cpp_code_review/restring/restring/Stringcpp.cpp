@@ -13,10 +13,10 @@ class String{
 public:
 	typedef char* iterator;
 	typedef const char* const_iterator;
-	String(const char *str="")
+	String(const char *str = "")
 		:_size(strlen(str))
 		, _capacity(_size)
-		, _str(new char[_size+1])
+		, _str(new char[_size + 1])
 	{
 		strcpy(_str, str);
 	}
@@ -28,15 +28,15 @@ public:
 	}
 
 	String(const String& s)
-		:_str(nullptr)    
-		,_size(s._size)
+		:_str(nullptr)
+		, _size(s._size)
 		, _capacity(s._capacity)
-		
+
 	{
 		String tmp(s._str);
-		swap(_str,tmp._str);
+		swap(_str, tmp._str);
 	}
-	
+
 
 	String &operator=(const String& s){
 		String tmp(s);
@@ -53,14 +53,14 @@ public:
 
 	void PushBack(const char c){
 		/*if (_size == _capacity){
-			size_t newcapacity = (_capacity == 0) ? 15 : _capacity*2;
-			Reverse(newcapacity);
-			}
-			_str[_size++] = c;
-			_str[_size] = '\0';*/
-		
+		size_t newcapacity = (_capacity == 0) ? 15 : _capacity*2;
+		Reverse(newcapacity);
+		}
+		_str[_size++] = c;
+		_str[_size] = '\0';*/
+
 		//调用insert函数达到尾插的目的
-		insert(_size,c);
+		insert(_size, c);
 	}
 
 	void PopBack(){
@@ -86,18 +86,18 @@ public:
 		if (_size + sz > _capacity){
 			Reverse(_size + sz);
 		}
-		strcpy(_str+_size,str);
+		strcpy(_str + _size, str);
 		_size += sz;
 	}
 
-	
+
 	//交换函数
 	void Swap(String &tmp){
-		swap(_str,tmp._str);
-		swap(_size,tmp._size);
-		swap(_capacity,tmp._capacity);
+		swap(_str, tmp._str);
+		swap(_size, tmp._size);
+		swap(_capacity, tmp._capacity);
 	}
-	
+
 
 	//可读可写的接口
 	char &operator[](size_t pos){
@@ -135,9 +135,9 @@ public:
 	//3.若pos<_size，则将pos位置开始的元素往后移动
 	//4.更新_size,_size++,更新'\0'位置_str[_size]='\0';
 	//对于第二步,数据挪动方向为从后往前依次挪动，否则或造成数据覆盖
-	void insert(size_t pos,const char c){
-		assert(pos<=_size);
-	//检查是否需要扩容
+	void insert(size_t pos, const char c){
+		assert(pos <= _size);
+		//检查是否需要扩容
 		if (_size == _capacity){
 			size_t newc = (_capacity == 0) ? 15 : (_capacity * 2);
 			Reverse(newc);
@@ -145,7 +145,7 @@ public:
 		size_t end = _size;
 		//为了数据的安全,最好不拿_size来直接当作挪动的位置
 		//检查插入的元素位置是否小于有效字符个数
-		while(end > pos){
+		while (end > pos){
 			//需要往后移动元素
 			_str[end] = _str[end - 1];
 			--end;
@@ -159,23 +159,23 @@ public:
 	//2.从pos位置开始的数据依次向后挪动len个位置
 	//3.从pos开始拷贝s
 	//4.更新_size
-	void insert(size_t pos,const char* s){
+	void insert(size_t pos, const char* s){
 		assert(pos <= _size);
 		//检查是否需要扩容
 		size_t len = strlen(s);
-		if (_size+ len > _capacity){
-			Reverse(_size+len);
+		if (_size + len > _capacity){
+			Reverse(_size + len);
 		}
-		 //开始挪动数据
+		//开始挪动数据
 		size_t end = _size + len;
-		while ((pos+len-1) < end){
+		while ((pos + len - 1) < end){
 			//第一个挪动的为'\0'
-			_str[end] = _str[end-len];
+			_str[end] = _str[end - len];
 			end--;
 		}
 
 		//从pos位置开始拷贝s
-		for (int i = 0; i < len;i++){
+		for (int i = 0; i < len; i++){
 			_str[i + pos] = s[i];
 		}
 		_size += len;
@@ -187,7 +187,7 @@ public:
 	//2.pos+len<=_size,
 	//从pos+len位置开始向前移动len个位置,从后向前挪动;
 	//3.更新_size-=len;
-	void Erase(size_t pos,size_t len){
+	void Erase(size_t pos, size_t len){
 		assert(pos<_size);
 		//从pos开始向后的字符全部删除
 		if (pos + len>_size){
@@ -212,7 +212,7 @@ public:
 	//s1.operator+=(&s1,s2) -->Append(&s1,s2._str)
 	String&operator+=(const String &s){
 		Append(s._str);
-		return *this;  
+		return *this;
 	}
 	//尾插一个字符
 	String&operator+=(const char c) {
@@ -249,8 +249,8 @@ public:
 			return npos;
 	}
 
-	
- 
+
+
 private:
 	size_t _size;
 	size_t _capacity;
@@ -340,7 +340,7 @@ void testString1(){
 	String s = "today";
 	String::iterator sit = s.begin();
 	while (sit != s.end()){
-		cout << *sit ;
+		cout << *sit;
 		sit++;
 	}
 	cout << endl;
@@ -356,10 +356,10 @@ void testInsert(){
 	//尾插
 	s.insert(s.Size(), '\"');
 	cout << s << endl;
-	s.insert(s.Size()-2, ' ');
+	s.insert(s.Size() - 2, ' ');
 	cout << s << endl;
 	//插入字符串
-	s.insert(s.Size()-2, "world");
+	s.insert(s.Size() - 2, "world");
 	cout << s << endl;
 	cout << s.Size() << endl;
 }
@@ -379,7 +379,7 @@ void testString2(){
 	String s;
 	s += 'I';
 	s += " love";
-	cout << s<< endl;
+	cout << s << endl;
 	String s2(" you!");
 	s += s2;
 	cout << s << endl;
@@ -389,9 +389,9 @@ void testString2(){
 //测试查找
 void testFind(){
 	String s("I love you!");
-	cout<<s.find('i')<<endl;
+	cout << s.find('i') << endl;
 	cout << s.find('y') << endl;
-	cout<<s.find(0,"love")<<endl;
+	cout << s.find(0, "love") << endl;
 
 }
 int main(){
