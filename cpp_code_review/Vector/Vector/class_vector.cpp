@@ -9,58 +9,68 @@ using namespace std;
 //	//vector中的数据不是以'\0'结束的(string 中是)
 //	//vector中可以管理不同类型的数据
 //	vector<char> v2(10, 'x');
+//	vector<int> v4(10, 2);
+//	vector<int>::iterator sit = v4.begin();
+//	while (sit != v4.end()){
+//		cout << *sit;
+//		sit++;
+//	}
 //	string s("hello bit!");
 //	vector<char> v3(s.begin(),s.end());
 //	return 0;
 //}
-//string::iterator: char*
-//vector<T>:  T*
+////string::iterator: char*
+////vector<T>:  T*
 
-#if 0
-int main(){
-	vector<int> v;
-	v.push_back(1);
-	v.push_back(2);
-	v.push_back(3);
-	v.push_back(4);
-
-	for (int i = 0; i < v.size(); i++){
-		cout << v[i] << " ";
-	}
-	cout << endl;
-
-	//普通迭代器方式访问
-	//vector<int>::iterator vit = v.begin();
-	auto vit = v.begin();
-	while (vit!=v.end()){
-		cout << *vit << " ";
-		vit++;
-	}
-	cout << endl;
-
-
-	//反向迭代器的访问方式
-	auto vit1 = v.rbegin();
-	while (vit1 != v.rend()){
-		cout << *vit1 << " ";
-		vit1++;
-	}
-	cout << endl;
-
-	//打印迭代器中内容的时候不能改变其内容
-
-
-	//基于范围的for循环,内部调用迭代器的begin和end;
-	for (auto &e : v){
-		
-		cout << e << " ";
-		//e++;//此处的e匹配的是迭代器中的元素
-		//若先++后输出的话就改变了迭代器本来要输出的内容
-	}
-	cout << endl;
-	return 0;
-}
-#endif 
+//int main(){
+//	vector<int> v;
+//	v.push_back(1);
+//	v.push_back(2);
+//	v.push_back(3);
+//	v.push_back(4);
+//
+//	for (int i = 0; i < v.size(); i++){
+//		cout << v[i] << " ";
+//	}
+//	cout << endl;
+//
+//	//普通迭代器方式访问
+//	//vector<int>::iterator vit = v.begin();
+//	auto vit = v.begin();
+//	while (vit!=v.end()){
+//		cout << *vit << " ";
+//		vit++;
+//	}
+//	cout << endl;
+//
+//
+//	//反向迭代器的访问方式
+//	auto vit1 = v.rbegin();
+//	while (vit1 != v.rend()){
+//		cout << *vit1 << " ";
+//		vit1++;
+//	}
+//	cout << endl;
+//
+//	//打印迭代器中内容的时候不能改变其内容
+//	vector<int>::const_iterator  cvit = v.begin();
+//	while (cvit != v.end()){
+//		cout << "const:" << *cvit<<" ";
+//		cvit++;
+//	}
+//	cout << endl;
+//
+//	//基于范围的for循环,内部调用迭代器的begin和end;
+//	for (auto &e : v){
+//		
+//		cout << e << " ";
+//		//e++;//此处的e匹配的是迭代器中的元素
+//		//若先++后输出的话就改变了迭代器本来要输出的内容
+//	}
+//	cout << endl;
+//	return 0;
+//}
+ 
 
 //void printVector(vector<int> &v){
 //	//对于只是简单打印的可以传引用，进而不进行值拷贝
@@ -130,9 +140,9 @@ int main(){
 	testVector();
 	return 0;
 }
+
+
 #endif
-
-
 
 #if 0
 void printVector(vector<int> &v){
@@ -308,3 +318,4 @@ int main(){
 	return 0;
 }
 #endif
+
