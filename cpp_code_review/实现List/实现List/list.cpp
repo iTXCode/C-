@@ -193,6 +193,7 @@ public:
 		for (const auto&e:lst){
 			PushBack(e);
 		}
+		//深拷贝实现资源的拷贝
 	}
 
 	//传统写法
@@ -339,5 +340,8 @@ int main(){
 	printList(l);
 	l.Erase(--l.end());
 	printList(l);
+	List<int> l1;
+	l1 = l;
+	printList(l1);
 	return 0;
 }
