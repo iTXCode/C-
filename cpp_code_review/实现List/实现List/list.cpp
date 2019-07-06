@@ -9,14 +9,16 @@ struct ListNode{
 	, _data(val)
 	{}
 	ListNode<T>* _next;
-	ListNode<T> *_prev;
+	ListNode<T>* _prev;
 	T _data;
 };
+//定义链表中的每个节点的结构
 
 
 //template <class T>
 //用泛型来解决const_iterator和iterator的问题
 template <class T,class Ref,class Ptr>
+
 struct ListIterator{
 	typedef ListNode<T> *pNode;
 	typedef ListIterator<T, Ref, Ptr> self;
@@ -215,6 +217,7 @@ public:
 		swap(_head,lst._head);
 		return *this;
 	}
+	//使用模板来写目的是在于接受不同类型参数的调用
 
 
 	//尾插
@@ -249,6 +252,8 @@ public:
 	const_iterator end() const{
 		return const_iterator(_head);
 	}
+
+
 	void Insert(iterator pos,const T& val){
 		pNode newnode = new Node(val);
 		pNode cur = pos._node;
@@ -258,6 +263,8 @@ public:
 		newnode->_next = cur;
 		cur->_prev = newnode;
 	}
+
+
 	void PushFront(const T&val){
 		Insert(begin(), val);
 	}
