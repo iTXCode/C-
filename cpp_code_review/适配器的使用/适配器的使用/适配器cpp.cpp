@@ -7,7 +7,7 @@ using namespace std;
 //迭代器的实现
 //为了实现迭代器的模板话(普通迭代器和const迭代器的代码复用)
 //一般使用三个参数的方法来实现该功能
-template<class T,class Ref,class Ptr>
+template<class T, class Ref, class Ptr>
 class DequeIterator{
 public:
 	typedef DequeIterator<T, Ref, Ptr> self;
@@ -80,10 +80,10 @@ int main(){
 		cout << pq.top() << endl;
 		pq.pop();
 	}
-	
+
 
 	//定义小堆的方式
-	priority_queue<int,vector<int>,greater<int>> q;
+	priority_queue<int, vector<int>, greater<int>> q;
 	q.push(100);
 	q.push(1);
 	q.push(12);
@@ -120,8 +120,8 @@ public:
 	}
 
 	bool operator<(const Date& d)const{
-		return _year < d._year||
-			_month < d._month||
+		return _year < d._year ||
+			_month < d._month ||
 			_day < d._day;
 	}
 
@@ -131,7 +131,7 @@ public:
 			_day > d._day;
 	}
 
-	
+
 private:
 	int _year;
 	int _month;
@@ -139,13 +139,13 @@ private:
 };
 
 ostream& operator<<(ostream&  _cout, const Date& d){
-	_cout << d._year<<"-"<<d._month<<"-"<<d._day;
+	_cout << d._year << "-" << d._month << "-" << d._day;
 	return _cout;
 }
 
 int main(){
 	priority_queue<Date> pq;
-	pq.push(Date(2019,7,12));
+	pq.push(Date(2019, 7, 12));
 	pq.push(Date(2019, 7, 10));
 	pq.push(Date(2019, 7, 5));
 	cout << "默认大堆:" << endl;
@@ -179,7 +179,7 @@ int main(){
 #include<list>
 using  namespace std;
 
-template <class T,class Container>
+template <class T, class Container>
 
 
 //template <class T,class Container=list<T>>
@@ -197,8 +197,8 @@ public:
 		return _con.back();
 	}
 
-	const T& Top () const{
-		 _con.back();
+	const T& Top() const{
+		_con.back();
 	}
 	size_t Size(){
 		return _con.size();
@@ -251,7 +251,7 @@ int main(){
 #include<deque>
 using  namespace std;
 
-template <class T, class Container=deque<T>>
+template <class T, class Container = deque<T>>
 //queue本来就是适配器，所以底层用双端队列来实现(deque)
 
 class Queue{
@@ -267,12 +267,12 @@ public:
 	T& Front(){
 		return _con.front();
 	}
-	
+
 
 	T& Back(){
 		return _con.back();
 	}
-	
+
 
 	size_t Size(){
 		return _con.size();
@@ -359,11 +359,11 @@ int main(){
 #include<vector>
 #include<queue>
 using namespace std;
-template <class T,class Container=vector<T>>
+template <class T, class Container = vector<T>>
 
 class PriortyQueue{
 public:
-	
+
 
 	//小堆中插入元素
 	void Push(const T& val){
@@ -373,7 +373,7 @@ public:
 		//向上调整，使其满足堆的性质
 	}
 	//小堆的方式插入并按堆的方式调节
-	
+
 	void shifUp(size_t child){
 		size_t parent = (child - 1) / 2;
 		while (child > 0){
@@ -404,7 +404,7 @@ public:
 		size_t child = 2 * parent + 1;
 		//还是大堆的话；
 		//看看是不是有右孩子存在,且值大于左孩子的值，取右孩子的值
-		while (child<_con.size()){
+		while (child < _con.size()){
 			if (child + 1 < _con.size() && _con[child + 1] > _con[child])
 				child++;
 			if (_con[child] < _con[parent]){
@@ -473,7 +473,7 @@ public:
 	//	}
 	//}
 
-	
+
 	T& Top(){
 		return _con[0];
 		//返回堆中的最大/最小的
@@ -499,7 +499,7 @@ int main(){
 	p.Push(2);
 	p.Push(6);
 	while (!p.Empty()){
-		cout<<p.Top() << " ";
+		cout << p.Top() << " ";
 		p.Pop();
 	}
 	cout << endl;
