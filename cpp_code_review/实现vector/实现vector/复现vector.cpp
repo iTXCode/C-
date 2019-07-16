@@ -2,6 +2,69 @@
 #include<vector>
 #include<assert.h>
 using namespace std;
+struct TrueType{
+
+};
+struct FalseType{
+
+};
+
+//类型萃取
+template<class T>
+
+struct TypeTraits{
+	typedef FalseType _isPodType;
+};
+
+//特化版本
+
+template<>
+struct TypeTraits<int>{
+	typedef TrueType _isPodType;
+};
+
+
+template<>
+struct TypeTraits<char>{
+	typedef TrueType _isPodType;
+};
+
+template<>
+struct TypeTraits<float>{
+	typedef TrueType _isPodType;
+};
+
+template<>
+struct TypeTraits<double>{
+	typedef TrueType _isPodType;
+};
+
+//通过最后一个参数不同形成函数重载
+template <class T>
+
+void Copy(T* dst, const T *src, size_t sz, TrueType){
+	cout << typeid(T).name() << ":memcpy()" << endl;
+	memcpy(dst, src, sizeof(T)*sz);
+}
+
+template <class T>
+
+//通过最后一个参数不同形成函数重载
+void Copy(T* dst, const T *src, size_t sz, FalseType){
+	//最后一个参数只给了类型，没给参数名
+	cout << typeid(T).name() << ":operator=()" << endl;
+	for (int i = 0; i < sz; i++){
+		dst[i] = src[i];
+	}
+}
+
+
+
+template <class T>
+void Copy(T* dst, const T *src, size_t sz){
+	Copy(dst, src, sz, TypeTraits<T>::_isPodType());
+}
+
 
 template <class T>
 class Vector{
@@ -16,11 +79,12 @@ public:
 
 	}
 	Vector(const Vector<T>& v){
-		T* _start = new T[v.Capacity()];
+		_start = new T[v.Capacity()];
 		//拷贝被拷贝对象的内容，但是不能使用memcpy；
 		for (int i = 0; i < v.Size(); i++){
 			_start[i] = v[i];
 		}
+		Copy(_start, v._start, v.Size());
 		//更新_finish;_endofstorage
 		_finish = _start + v.Size();
 		_endofStorage = _start + v.Capacity();
@@ -183,6 +247,13 @@ private:
 
 
 template <class T>
+//void PrintfVector(const Vector<T> &v){
+//	for (int i = 0; i < v.Size();i++){
+//		cout <<v[i]<< " ";
+//		//此处的v[]如要返回值，必须重载[]
+//	}
+//	cout << endl;
+//}
 void PrintfVector(const Vector<T> &v){
 	for (int i = 0; i < v.Size();i++){
 		cout <<v[i]<< " ";
@@ -190,7 +261,8 @@ void PrintfVector(const Vector<T> &v){
 	}
 	cout << endl;
 }
-int main(){
+
+void testint(){
 	Vector<int> v;
 	v.PushBack(1);
 	v.PushBack(2);
@@ -204,13 +276,26 @@ int main(){
 	v.PushBack(2);
 	v.PushBack(2);
 	v.PushBack(2);
+	Vector<int> v1(v);
+	PrintfVector(v1);
 	PrintfVector(v);
-	cout<<v.begin()<<endl;
+	cout << v.begin() << endl;
 	v.Erase(v.end() - 1);
 	PrintfVector(v);
-	v.Resize(20,2);
+	v.Resize(20, 2);
 	PrintfVector(v);
 	v.Resize(5);
 	PrintfVector(v);
+}
+
+void testString(){
+	Vector<string> v;
+	v.PushBack("hello ");
+	v.PushBack("bit!");
+	Vector<string> v1(v);
+}
+int main(){
+	testint();
+	testString();
 	return 0;
 }
