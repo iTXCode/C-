@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5C414BB9-B8A7-483F-A999-BDDA871FA5F1}</ProjectGuid>
-    <RootNamespace>实现List</RootNamespace>
+    <ProjectGuid>{6D76B2B4-E97A-4608-88BD-160FFDC4ECCB}</ProjectGuid>
+    <RootNamespace>计算机签名</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,8 +64,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="list.cpp" />
-    <ClCompile Include="relist.cpp" />
+    <ClCompile Include="MD5.cpp" />
+    <ClCompile Include="test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MD5.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
