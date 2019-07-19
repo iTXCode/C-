@@ -6,8 +6,8 @@ class MD5
 {
 public:
 	MD5();
-	std::string getFileMd5(const char* filename);
-	std::string getStringMd5(const std::string& str);
+	std::string getFileMD5(const char* filename);
+	std::string getStringMD5(const std::string& str);
 
 private:
 	void init();

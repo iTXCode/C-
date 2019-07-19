@@ -12,10 +12,10 @@ int main(int argc,char* argv[]){
 	char option = *argv[1];
 	switch (option){
 	case '0':
-		std::cout << md5.getFileMd5(argv[2]) << std::endl;
+		std::cout << md5.getFileMD5(argv[2]) << std::endl;
 		break;
 	case '1':
-		std::cout << md5.getStringMd5(argv[2]) << std::endl;
+		std::cout << md5.getStringMD5(argv[2]) << std::endl;
 		break;
 	}
 	return 0;
