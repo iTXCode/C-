@@ -77,6 +77,8 @@ int main(){
 
 
 
+
+#if 0
 class A{
 public:
 	A( char* name="james")
@@ -169,5 +171,60 @@ void test(){
 	
 int main(){
 	test();
+	return 0;
+}
+
+#endif
+
+class B;
+
+class A{
+public:
+	friend void disPlay(const A& a,const B& b);
+	A()
+		:_id(10)
+	{
+		cout << "A()" << endl;
+	}
+
+	~A(){
+		cout << "~A()" << endl;
+	}
+
+	A(const A& a){
+		cout << "A(const A)" << endl;
+	}
+protected:
+	int _id;
+};
+
+class B :public A
+{
+public:
+	B()
+		:_name("jcak")
+	{
+		cout << "B()" << endl;
+	}
+	~B(){
+		cout << "~B()" << endl;
+	}
+
+	B(const B& b){
+		cout << "B(const B& b)" << endl;
+	}
+protected:
+	char* _name;
+};
+
+void disPlay(const A& a, const B& b){
+	cout << a._id << endl;
+	//cout << b._name << endl;
+}
+
+int main(){
+	A a;
+	B b;
+	disPlay(a, b);
 	return 0;
 }
