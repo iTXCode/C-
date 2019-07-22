@@ -176,6 +176,8 @@ int main(){
 
 #endif
 
+
+#if 0
 class B;
 
 class A{
@@ -226,5 +228,43 @@ int main(){
 	A a;
 	B b;
 	disPlay(a, b);
+	return 0;
+}
+#endif 
+
+
+class Person
+{
+public:
+	Person() { ++_count; }
+protected:
+	string _name; // 姓名
+public:
+	static int _count; // 统计人的个数。
+};
+int Person::_count = 0;
+class Student : public Person
+{
+protected:
+	int _stuNum; // 学号
+};
+class Graduate : public Student
+{
+protected:
+	string _seminarCourse; // 研究科目
+};
+void TestPerson()
+{
+	Student s1;
+	Student s2;
+	Student s3;
+	Graduate s4;
+	cout << " 人数 :" << Person::_count << endl;
+	Student::_count = 0;
+	cout << " 人数 :" << Person::_count << endl;
+}
+
+int main(){
+	TestPerson();
 	return 0;
 }
