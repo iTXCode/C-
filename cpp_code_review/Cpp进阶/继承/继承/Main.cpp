@@ -1,6 +1,6 @@
-#include<iostream>
+//#include<iostream>
 
-using namespace std;
+//using namespace std;
 
 #if 0
 class BaseInfor{
@@ -233,6 +233,7 @@ int main(){
 #endif 
 
 
+#if 0
 class Person
 {
 public:
@@ -268,3 +269,37 @@ int main(){
 	TestPerson();
 	return 0;
 }
+
+#endif
+
+
+#if 0
+#include<iostream>
+#include<string>
+#include<windows.h>
+
+using namespace std;
+
+class Person
+{
+public:
+	string _name = "小李子"; // 姓名
+	int _num = 111; // 身份证号
+};
+class Student : public Person
+{
+public:
+	int _num = 999; // 学号
+};
+
+int main(){
+	Student s;
+	cout <<"s._num="<< s._num << endl;
+	cout << "s.Person::num=" << s.Person::_num << endl;
+	//可以通过这种方法访问父类中的对象
+	cout <<"s.Student::_num="<< s.Student::_num << endl;
+	system("pause");
+	return 0;
+}
+#endif 
+
