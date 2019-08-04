@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B0D523B3-DD98-4B1A-AF2B-E826F94FA380}</ProjectGuid>
-    <RootNamespace>继承</RootNamespace>
+    <ProjectGuid>{E0D95671-6B47-4B7D-ABAD-99A57331F784}</ProjectGuid>
+    <RootNamespace>异常</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,8 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="maincpp.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

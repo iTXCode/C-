@@ -80,29 +80,58 @@ int main(){
 }
 #endif
 
-#if 0
-#include<iostream>
 
-using namespace std;
-class Person {
-public:
-	virtual ~Person() { cout << "~Person()" << endl; }
-};
-class Student : public Person {
-public:
-	virtual ~Student() { cout << "~Student()" << endl; }
-};
-// 只有派生类Student的析构函数重写了Person的析构函数，下面的delete对象调用析构函数，才能构成多态，才能保证p1和p2指向的对象正确的调用析构函数。
-int main()
-{
-	Person* p1 = new Person;
-	Person* p2 = new Student;
-	delete p1;
-	delete p2;
-	return 0;
-}
+//#include<iostream>
+//
+//using namespace std;
+//class Person {
+//public:
+//	virtual ~Person() { cout << "~Person()" << endl; }
+//};
+//class Student : public Person {
+//public:
+//	virtual ~Student() { cout << "~Student()" << endl; }
+//};
+//// 只有派生类Student的析构函数重写了Person的析构函数，
+////下面的delete对象调用析构函数，才能构成多态，
+////才能保证p1和p2指向的对象正确的调用析构函数。
+//int main()
+//{
+//	Person* p1 = new Person;
+//	Student* p2 = new Student;
+//	//调用了三个析构函数
+//	delete p1;
+//	delete p2;
+//	return 0;
+//}
 
-#endif
+//#include<iostream>
+//
+//using namespace std;
+//class Person {
+//public:
+//	virtual ~Person() { cout << "~Person()" << endl; }
+//};
+//class Student : public Person {
+//public:
+//	virtual ~Student() { cout << "~Student()" << endl; }
+//};
+//// 只有派生类Student的析构函数重写了Person的析构函数，
+////下面的delete对象调用析构函数，才能构成多态，
+////才能保证p1和p2指向的对象正确的调用析构函数。
+//int main()
+//{
+//	Person* p1 = new Person;
+//	Person* p2 = new Student;
+//	//子类对象赋给父类的指针
+//	//若析构函数不是虚函数，则不会调用子类的析构函数
+//	delete p1;
+//	delete p2;
+//	return 0;
+//}
+////析构函数最好定义为虚函数，让子类父类的析构函数构成多态
+////编译器在底层把父类和子类的析构函数改成同名函数(destructor)
+
 
 
 #if 0
