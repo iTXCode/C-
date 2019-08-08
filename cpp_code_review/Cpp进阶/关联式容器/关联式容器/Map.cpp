@@ -121,6 +121,7 @@ int main(){
 #endif
 
 
+#if  0
 #include<iostream>
 #include<set>
 #include<string>
@@ -148,3 +149,5 @@ int main(){
 	testset();
 	return 0;
 }
+#endif
+

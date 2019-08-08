@@ -110,39 +110,75 @@ private:
 	T* _ptr;
 };
 
-//struct Date{
-//	int _year = 1997;
-//	int _month = 8;
-//	int _day = 1;
-//	~Date(){
-//		cout << "~Date()" << endl;
-//	}
-//};
+struct Date{
+	int _year = 1997;
+	int _month = 8;
+	int _day = 1;
+	~Date(){
+		cout << "~Date()" << endl;
+	}
+};
 
-//int main(){
-//	//int *pa = new int(1);
-//	//SmartPtr<int> sp(pa);
-//	//*pa=8;
-//	SmartPtr<int> sp(new int(1));
-//	*sp = 10;//像指针一样使用,和pa指向同一片空间
-//
-//	Date *dt = new Date;
-//	SmartPtr<Date> spd(dt);
-//	dt->_year = 1998;
-//	dt->_month = 1;
-//	dt->_day = 28;
-//
-//
-//	SmartPtr<Date> spd2 = spd;
-//	//调用拷贝构造(浅拷贝)
-//	spd2->_year = 1997;
-//	//继续往后调试程序奔溃,原因为资源的二次释放(需要进行深拷贝)
-//	return 0;
-//}
+int main(){
+	//int *pa = new int(1);
+	//SmartPtr<int> sp(pa);
+	//*pa=8;
+	SmartPtr<int> sp(new int(1));
+	*sp = 10;//像指针一样使用,和pa指向同一片空间
+	
+	SmartPtr<Date> spd(new Date);
+	spd->_year = 1998;
+	spd->_month = 1;
+	spd->_day = 28;
+	
+
+	SmartPtr<Date> spd2 = spd;
+	//调用拷贝构造(浅拷贝)
+	spd2->_year = 1997;
+	//继续往后调试程序奔溃,原因为资源的二次释放(需要进行深拷贝)
+	return 0;
+}
 ////智能指针：要像指针一样使用
+#endif
 
 
+#if 0
+//auto_ptr的使用
+#include<iostream>
+#include<memory>
+using namespace std;
+
+struct Date{
+	int _year = 1997;
+	int _month = 8;
+	int _day = 1;
+	~Date(){
+		cout << "~Date()" << endl;
+	}
+};
+
+int main(){
+	auto_ptr<Date> d1(new Date);
+	//d1里面是空的，调试看看
+	auto_ptr<Date> d2 = d1;
+	//此处d2指向这片空间(d1中的_ptr没有了)，而d1为空
+	d2->_year = 1997;
+	(*d2)._year = 1998;
+	return 0;
+	//程序结束的时候,调用一次析构函数
+	//原因为此时只有智能指针d2指向这片空间，d1被架空
+}
+
+#endif
+
+#if 0
 //auto_ptr的实现
+
+
+
+#include<iostream>
+#include<memory>
+using namespace std;
 struct Date{
 	int _year = 1997;
 	int _month = 8;
@@ -184,17 +220,7 @@ public:
 private:
 	T* _ptr;
 };
-//int main(){
-//	auto_ptr<Date> d1(new Date);
-//	//d1里面是空的，调试看看
-//	auto_ptr<Date> d2 = d1;
-//	//此处d2指向这片空间(d1中的_ptr没有了)，而d1为空
-//	d2->_year = 1997;
-//	(*d2)._year = 1998;
-//	return 0;
-//	//程序结束的时候,调用一次析构函数
-//	//原因为此时只有智能指针d2指向这片空间，d1被架空
-//}
+
 
 int main(){
 	Autoptr<Date> d1(new Date);
@@ -204,11 +230,39 @@ int main(){
 	(*d2)._year = 1998;
 	return 0;	
 }
-
-
-//auto_ptr问题是拷贝的啥时候出现将指针悬空的问题
+//
+//
+////auto_ptr问题是拷贝的啥时候出现将指针悬空的问题
 
 #endif
+
+#if 0
+//unique_ptr的使用
+#include<iostream>
+#include<memory>
+
+using namespace std;
+
+struct Date{
+	int _year = 1997;
+	int _month = 8;
+	int _day = 1;
+	~Date(){
+		cout << "~Date()" << endl;
+	}
+};
+
+int main(){
+	unique_ptr<int>  uq(new int);
+	*uq = 10;
+
+	unique_ptr<Date> uq1(new Date);
+	unique_ptr<Date> uq2 = uq1;
+	unique_ptr<Date> uq3 (uq1);
+	return 0;
+}
+#endif
+
 
 #if 0
 //为了解决auto_ptr的拷贝问题,引入了unique_ptr
@@ -273,39 +327,33 @@ int main(){
 
 #endif
 
+#if 0
+//解决了拷贝和赋值的问题
+#include<iostream>
+#include<memory>
 
-////解决了拷贝和赋值的问题
-//#include<iostream>
-//#include<memory>
-//
-//using namespace std;
-//struct Date{
-//	int _year = 1997;
-//	int _month = 8;
-//	int _day = 1;
-//	~Date(){
-//		cout << "~Date()" << endl;
-//	}
-//};
-//
-//template <class T>
-//
-//
-//private:
-//	T* _ptr;
-//};
-//
-//int main(){
-//	//shared_ptr可拷贝，可复制
-//	shared_ptr<Date> sp(new Date);
-//	shared_ptr<Date> spcopy(sp);
-//	shared_ptr<Date> sp2(new Date);
-//	sp2 = sp;
-//	cout << sp.use_count() << endl;
-//	//引用计数:记录管理的指针;
-//	return 0;
-//}
+using namespace std;
+struct Date{
+	int _year = 1997;
+	int _month = 8;
+	int _day = 1;
+	~Date(){
+		cout << "~Date()" << endl;
+	}
+};
 
+
+int main(){
+	//shared_ptr可拷贝，可复制
+	shared_ptr<Date> sp(new Date);
+	shared_ptr<Date> spcopy(sp);
+	shared_ptr<Date> sp2(new Date);
+	sp2 = sp;
+	cout << sp.use_count() << endl;
+	//引用计数:记录管理的指针;
+	return 0;
+}
+#endif
 
 #if  0
 //解决了拷贝和赋值的问题
@@ -446,7 +494,7 @@ int main(){
 #endif
 
 
-#if  0
+#if 0
 //shared_ptr与线程安全的问题
 #include<iostream>
 #include<thread>
@@ -549,7 +597,7 @@ int main(){
 #endif
 
 
-#if 0
+
 //shared_ptr与线程安全的问题
 //加入互斥锁来保证线程的安全
 #include<iostream>
@@ -678,7 +726,7 @@ int main(){
 	cout << sp->_year << endl;
 	return 0;
 }
-#endif
+
 
 
 ////shared_ptr 的循环引用
