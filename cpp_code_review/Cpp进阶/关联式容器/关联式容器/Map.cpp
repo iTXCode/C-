@@ -1,13 +1,16 @@
-//#include<iostream>
-//#include<map>
-//#include<string>
-//#include <functional>
-//using namespace std;
-//
+#if 0
+
+#include<iostream>
+#include<map>
+#include<string>
+#include <functional>
+using namespace std;
+
 //void test(){
 //	map<string, string> dictMap;
 //	dictMap.insert(make_pair("中国", "China"));
 //	dictMap.insert(make_pair("日本", "Japanese"));
+//	//注意map容器的插入方式
 //	dictMap["西安"] = "xi,an";
 //	auto dit = dictMap.begin();
 //	while (dit != dictMap.end()){
@@ -15,40 +18,103 @@
 //		++dit;
 //	}
 //}
-//void testMap(){
-//	map<int,string, greater<int>> testMap;
-//	testMap[8] = "中国";
-//	testMap[2] = "美国";
-//	testMap[1] = "法国";
-//	testMap[3] = "阿拉伯";
-//	testMap[10] = "伊拉克";
-//	for (const auto& e : testMap){
-//		cout << e.first << " " << e.second << endl;
-//	}
-//	int key;
-//	/*while (cin >> key){
-//		if (testMap.count(key))
-//		cout << key<<"-->" << testMap[key] << endl;
-//		else
-//		cout << "not dind key:" << key << endl;
-//		}*/
-//	cin >> key;
-//	//find的迭代器的使用
-//	if (testMap.find(key) != testMap.end()){
-//		cout << testMap[key] << endl;
-//	}
-//	
-//}
-//int main(){
-//	testMap();
-//	return 0;
-//}
+void testMap(){
+	map<int,string, greater<int>> testMap;
+	testMap[8] = "中国";
+	testMap[2] = "美国";
+	testMap[1] = "法国";
+	testMap[3] = "阿拉伯";
+	testMap[10] = "伊拉克";
+	testMap[9] = "西安";
+	testMap.insert(make_pair(11,"英国"));
+	for (const auto& e : testMap){
+		cout << e.first << " " << e.second << endl;
+	}
+	int key;
+	/*while (cin >> key){
+		if (testMap.count(key))
+		cout << key<<"-->" << testMap[key] << endl;
+		else
+		cout << "not dind key:" << key << endl;
+		}*/
+	cin >> key;
+	//find的迭代器的使用
+	if (testMap.find(key) != testMap.end()){
+		cout << testMap[key] << endl;
+	}
+	
+}
+int main(){
+	testMap();
+	return 0;
+}
 
+#endif
 
-
-
-//【测试multimap】
 #if 0
+//map迭代器的使用
+#include<iostream>
+#include <string>
+#include <map>
+
+using namespace std;
+
+void TestMap()
+{
+	map<string, string> m{ { "apple", "苹果" },
+	{ "banan", "香蕉" },
+	{ "orange", "橘子" },
+	{ "peach", "桃子" },
+	{ "waterme", "水蜜桃" } };
+	cout << endl;
+	for (auto it = m.begin(); it != m.end(); ++it)
+		cout<< (*it).first << "--->" << it->second << endl;
+	cout<< endl;
+	
+}
+
+int main(){
+	TestMap();
+	return 0;
+}
+
+#endif
+
+
+#if 0
+#include<iostream>
+#include <string>
+#include <map>
+
+using namespace std;
+void TestMap()
+{
+	// 构造一个空的map，此时m中一个元素都没有
+	map<string, string> m;
+	/*
+	operator[]的原理是：
+	用<key, T()>构造一个键值对，然后调用insert()函数将该键值对插入到map中
+	如果key已经存在，插入失败，insert函数返回该key所在位置的迭代器
+	如果key不存在，插入成功，insert函数返回新插入元素所在位置的迭代器
+	operator[]函数最后将insert返回值键值对中的value返回
+	*/
+	// 将<"apple", "">插入map中，插入成功，返回value的引用，将“苹果”赋值给该引用结果，
+	// 即修改与"apple"对应的value""为"苹果"
+	m["apple"] = "苹果";
+	// 将<"apple", "">插入map中，插入失败，将<"apple", "苹果">中的"苹果"返回
+	cout << m["apple"] << endl;
+	cout << m.size() << endl;
+	// “banan不在map中，该函数抛异常”
+	m.at("banan");
+}
+
+int  main(){
+	TestMap();
+	return 0;
+}
+#endif
+//【测试multimap】
+
 #include<iostream>
 #include<map>
 #include<string>
@@ -90,7 +156,7 @@ int main(){
 	return 0;
 }
 
-#endif
+
 
 #if 0
 #include<iostream>

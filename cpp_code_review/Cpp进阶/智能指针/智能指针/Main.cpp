@@ -597,7 +597,7 @@ int main(){
 #endif
 
 
-
+#if 0
 //shared_ptr与线程安全的问题
 //加入互斥锁来保证线程的安全
 #include<iostream>
@@ -726,40 +726,69 @@ int main(){
 	cout << sp->_year << endl;
 	return 0;
 }
+#endif
 
 
+#if 0
+//shared_ptr 的循环引用
+#include<iostream>
+#include<memory>
 
-////shared_ptr 的循环引用
-//#include<iostream>
-//#include<memory>
-//
-//using namespace std;
-//
-//struct ListNode
-//{
-//	int _data;
-//	/*shared_ptr<ListNode> _prev;
-//	shared_ptr<ListNode> _next;*/
-//	weak_ptr<ListNode> _prev;
-//	weak_ptr<ListNode> _next;
-//	~ListNode(){ cout << "~ListNode()" << endl; }
-//	//换成weak_ptr即可调用ListNode 的析构函数
-//};
-//
-//int main(){
-//	shared_ptr<ListNode> node1(new ListNode);
-//	shared_ptr<ListNode> node2(new ListNode);
-//	cout << node1.use_count() << endl;
-//	cout << node2.use_count() << endl;
-//
-//	node1->_next = node2;
-//	node2->_prev = node1;
-//
-//	cout << node1.use_count() << endl;
-//	cout << node2.use_count() << endl;
-//	return 0;
-//}
-//
+using namespace std;
+
+struct ListNode
+{
+	int _data;
+	shared_ptr<ListNode> _prev;
+	shared_ptr<ListNode> _next;
+	~ListNode(){ cout << "~ListNode()" << endl; }
+};
+
+int main(){
+	shared_ptr<ListNode> node1(new ListNode);
+	shared_ptr<ListNode> node2(new ListNode);
+	cout << node1.use_count() << endl;
+	cout << node2.use_count() << endl;
+
+	node1->_next = node2;
+	node2->_prev = node1;
+
+	cout << node1.use_count() << endl;
+	cout << node2.use_count() << endl;
+	return 0;
+}
+#endif
+
+#if 0
+//shared_ptr 析构的使用
+#include<iostream>
+#include<memory>
+
+using namespace std;
+
+struct ListNode
+{
+	int _data;
+	weak_ptr<ListNode> _prev;
+	weak_ptr<ListNode> _next;
+	~ListNode(){ cout << "~ListNode()" << endl; }
+	//换成weak_ptr即可调用ListNode 的析构函数
+};
+
+int main(){
+	shared_ptr<ListNode> node1(new ListNode);
+	shared_ptr<ListNode> node2(new ListNode);
+	cout << node1.use_count() << endl;
+	cout << node2.use_count() << endl;
+
+	node1->_next = node2;
+	node2->_prev = node1;
+
+	cout << node1.use_count() << endl;
+	cout << node2.use_count() << endl;
+	return 0;
+}
+#endif
 
 
 
@@ -852,7 +881,7 @@ int main(){
 #endif
 
 
-#if 0
+
 //异常安全的问题
 //线程的死锁
 #include<iostream>
@@ -886,7 +915,7 @@ private:
 
 void fun(){
 	try{
-		
+
 		LockGurad<mutex> lg(mtx);
 		int i;
 		cin >> i;
@@ -908,7 +937,7 @@ int main(){
 	t2.join();
 	return 0;
 }
-#endif 
+
 
 
 

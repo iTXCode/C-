@@ -1,5 +1,5 @@
-
-
+#if 0
+//改进的二叉搜索树
 //平衡树的建设
 
 #include<iostream>
@@ -7,6 +7,7 @@
 using namespace std;
 
 template<class T>
+//结点的定义
 struct AVLNode
 {
 	AVLNode(const T& val = T())
@@ -20,7 +21,7 @@ struct AVLNode
 	AVLNode<T>* _pLeft;
 	AVLNode<T>* _pRight;
 	AVLNode<T>* _pParent;
-	//平衡因子
+	//平衡因子，用来记录结点的左右子树高度差
 	int _bf;
 };
 
@@ -31,6 +32,11 @@ public:
 	typedef AVLNode<T> Node;
 	typedef Node* pNode;
 
+	//插入结点
+	/*
+	若根结点为空,申请一个结点进行初始化
+	若不为空,
+	*/
 	bool insert(const T& val)
 	{
 		if (_root == nullptr)
@@ -56,12 +62,14 @@ public:
 				return false;
 		}
 
+		//开始插入
 		pNode newNode = new Node(val);
 		if (parent->_data > val)
 			parent->_pLeft = newNode;
 		else
 			parent->_pRight = newNode;
 		newNode->_pParent = parent;
+		//将新结点与父节点联系起来
 
 		//调整，保证平衡
 		while (parent)
@@ -95,6 +103,8 @@ public:
 
 	}
 
+
+	//左旋
 	void RotateL(pNode parent)
 	{
 		pNode subR = parent->_pRight;
@@ -126,10 +136,12 @@ public:
 			//如果parent是根，subR变成新的根
 			subR->_pParent = nullptr;
 			_root = subR;
+			//更新根节点
 		}
 
 		//链接subR 和 parent
 		parent->_pParent = subR;
+
 
 		//更新平衡因子
 		subR->_bf = parent->_bf = 0;
@@ -142,3 +154,4 @@ int main(){
 
 	return 0;
 }
+#endif
