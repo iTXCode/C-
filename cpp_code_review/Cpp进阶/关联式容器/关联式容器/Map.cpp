@@ -113,6 +113,8 @@ int  main(){
 	return 0;
 }
 #endif
+
+#if 0
 //¡¾²âÊÔmultimap¡¿
 
 #include<iostream>
@@ -155,6 +157,8 @@ int main(){
 	testMap();
 	return 0;
 }
+#endif
+
 
 
 
@@ -186,8 +190,51 @@ int main(){
 }
 #endif
 
-
 #if  0
+//multiset
+#include<iostream>
+#include<string>
+#include<set>
+using namespace std;
+
+
+
+void TestSet(){
+	set<int> s;
+	s.insert(1);
+	s.insert(2);
+	s.insert(3);
+	s.insert(4);
+	s.insert(5);
+	s.insert(6);
+	auto lst = s.rbegin();
+	while (lst != s.rend()){
+		cout << *lst << " ";
+		lst++;
+	}
+	cout << endl;
+	auto lit = s.cbegin();
+	while (lit != s.end()){
+		cout << *lit << endl;
+		++lit;
+	}
+	auto ite = s.crbegin();
+	while (ite != s.crend()){
+		cout << *ite << " ";
+		ite++;
+	}
+	cout << endl;
+}
+
+int main(){
+	TestSet();
+	return 0;
+}
+#endif
+
+
+
+#if 0
 #include<iostream>
 #include<set>
 #include<string>
@@ -215,5 +262,7 @@ int main(){
 	testset();
 	return 0;
 }
+
 #endif
+
 

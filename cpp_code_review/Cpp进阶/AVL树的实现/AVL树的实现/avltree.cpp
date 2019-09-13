@@ -1,5 +1,9 @@
 #include <iostream>
+
+
 using namespace std;
+
+
 template<class T>
 struct AVLNode
 {
@@ -260,17 +264,15 @@ private:
 
 void testAVL()
 {
-	//int arr[] = { 16, 3, 7, 11, 9, 26, 18, 14, 15 };
+	
 	int arr[] = { 4, 2, 6, 1, 3, 5, 15, 7, 16, 14 };
 
 	AVLTree<int> avl;
 	for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
 	{
 		avl.insert(arr[i]);
-		cout << arr[i] << "--->" << avl.IsBalance() << endl;
+		cout << "插入值:"<<arr[i] << "--->" << "平衡因子:"<<avl.IsBalance() << endl;
 	}
-
-
 	avl.Inorder();
 }
 

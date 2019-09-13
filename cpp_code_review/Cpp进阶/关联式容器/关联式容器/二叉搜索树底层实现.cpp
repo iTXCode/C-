@@ -35,7 +35,7 @@ public:
 	pNode find(const T& val){
 		if (_root == nullptr)
 			return nullptr;
-		pNode cur = root;
+		pNode cur = _root;
 		while (cur){
 			if (cur->_data = val)
 				return cur;
@@ -49,6 +49,13 @@ public:
 		//到这里的时候说明没找到
 		return nullptr;
 	}
+	/*
+	插入的总结
+	首先确定根节点是否为空,为空直接将值插入到根节点
+	不为空的话,按照二叉搜索树的性查找合适的插入点
+	当找到合适的插入点的时候判断插入点的结点值和插入结点值的大小关系,
+	在将值插入到对应的结点
+	*/
 	//插入一个值
 	bool insert(const T&val){
 		
@@ -237,6 +244,7 @@ void testBSTree(){
 	bt.insert(6);
 	bt.insert(8);
 	bt.insert(9);
+	cout<<bt.find(5)<<endl;
 	bt.Inorder();
 	bt.erase(4);
 	bt.Inorder();
@@ -263,5 +271,4 @@ int main(){
 	testBSTree();
 	return 0;
 }
-
-#endif
+#endif 
