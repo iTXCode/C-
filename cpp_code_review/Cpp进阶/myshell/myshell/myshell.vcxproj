@@ -11,22 +11,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8F9773AB-9FD9-46BF-A5EB-27D614579C8F}</ProjectGuid>
-    <RootNamespace>红黑树</RootNamespace>
+    <ProjectGuid>{2DD1DB12-DDF6-4DD7-86D8-EAB3E737597A}</ProjectGuid>
+    <RootNamespace>myshell</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -64,14 +64,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Map_RBTree.cpp" />
-    <ClCompile Include="Set_RBTree.cpp" />
-    <ClCompile Include="test_RBTree.cpp" />
-    <ClCompile Include="RBTree.h" />
-    <ClCompile Include="红黑树.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Map_RBTree.h" />
+    <ClCompile Include="myshell.c" />
+    <ClCompile Include="myshell.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

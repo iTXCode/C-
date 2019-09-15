@@ -15,25 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="红黑树.cpp">
+    <ClCompile Include="myshell.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="RBTree.h">
-      <Filter>头文件</Filter>
-    </ClCompile>
-    <ClCompile Include="test_RBTree.cpp">
+    <ClCompile Include="myshell.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Map_RBTree.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Set_RBTree.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Map_RBTree.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
