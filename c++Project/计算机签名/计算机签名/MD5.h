@@ -1,71 +1,60 @@
-#pragma  once
-#define  N  64
+#pragma once
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include <cmath>
+#define N 64
 
-class MD5
-{
+class MD5{
 public:
+	// 构造函数
 	MD5();
-	std::string getFileMD5(const char* filename);
+	// 接收文件
+	std::string getFiledMDd5(const char* filename);
+	// 接收字符串
 	std::string getStringMD5(const std::string& str);
-
 private:
 	void init();
 
-	void calculateMD5(size_t* chunk);
-	//以4个字节(32位)为单位进行处理，
-	//一共4论轮，每轮16次操作。经过64此操作
 	void calculateMD5Final();
-	//最后一块数据的填充
+	//进行64次操作，每一轮处理四个字节(一个数据块)
 	std::string changeHex(size_t num);
-	/*
-	F(x, y, z) = (x & y) | ((~x) & z)
-	G(x, y, z) = (x & z) | (y & (~z))
-	H(x, y, z) = x ^ y ^ z
-	I(x, y, z) = y ^ (x | (~z))
-	*/
 
 
-	size_t F(size_t x, size_t y, size_t z)
-	{
+	size_t F(size_t x, size_t y, size_t z) {
 		return (x & y) | ((~x) & z);
 	}
-
-	size_t G(size_t x, size_t y, size_t z)
-	{
+	size_t G(size_t x, size_t y, size_t z) {
 		return (x & z) | (y & (~z));
 	}
-	size_t H(size_t x, size_t y, size_t z)
-	{
+	size_t H(size_t x, size_t y, size_t z) {
 		return x ^ y ^ z;
 	}
-	size_t I(size_t x, size_t y, size_t z)
-	{
+	size_t I(size_t x, size_t y, size_t z) {
 		return y ^ (x | (~z));
 	}
 
-	size_t shiftLeftRotate(size_t num, size_t n)
-	{
+	size_t shiftLeftRotate(size_t num, size_t n) {
 		return (num << n) | (num >> (32 - n));
-		//先左移n位，然后再右移32-n 位，两者再进行或运算
+		//循环左移n位
 	}
 
+	// 经过 64轮操作
+	//每次操作处理 4 个字节
+	void calculateMD5(size_t* chunk);
+
 private:
-	size_t _A;
-	size_t _B;
-	size_t _C;
-	size_t _D;
+	size_t _a;
+	size_t _b;
+	size_t _c;
+	size_t _d;
 
-	size_t _k[N];
-	//
-	size_t _sft[N];
-	//循环移动的位数
+	size_t _k[N];//存放64个值
+	size_t _sft[N];//循环移位(决定每次移动的位数)
+	size_t _lastByte;//最后一次读取的数据块大小
 
-	const size_t _chunkByte;
-	//每个运算所用的块的大下
+	const size_t _chunkByte; //每一个运算
 	unsigned char _chunk[N];
-	//存放块
-
-	size_t _lastByte;
-	unsigned long long _totalByte;
+	unsigned long long _totalByte ;
 };
